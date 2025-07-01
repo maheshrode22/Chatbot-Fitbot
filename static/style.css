@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* ChatGPT-like minimalist theme with dark mode support */
+:root {
+    --bg: #f7f7fa;
+    --card-bg: #fff;
+    --text-main: #222;
+    --text-muted: #888;
+    --accent: #10a37f;
+    --accent2: #10a37f;
+    --input-bg: #f0f4fa;
+    --input-border: #d0d7e2;
+    --shadow: 0 2px 8px 0 #e0e7ef;
+}
+body.dark-theme {
+    --bg: #23272f;
+    --card-bg: #343541;
+    --text-main: #f7f7fa;
+    --text-muted: #b0b8c7;
+    --accent: #10a37f;
+    --accent2: #10a37f;
+    --input-bg: #23283aee;
+    --input-border: #3a3f4b;
+    --shadow: 0 2px 8px 0 #23283a;
+}
+body {
+    background: var(--bg);
+    color: var(--text-main);
+    font-family: 'Poppins', Arial, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+}
+.container, .chat-container {
+    background: var(--card-bg);
+    color: var(--text-main);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    max-width: 800px;
+    width: 100%;
+    margin: 1.5rem auto 0 auto;
+    padding: 2rem 2rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 500px;
+}
+@media (max-width: 600px) {
+    .container, .chat-container {
+        max-width: 98vw;
+        padding: 1.2rem 0.5rem 1.5rem 0.5rem;
+    }
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="number"],
+    select {
+        min-height: 44px;
+        max-height: 44px;
+        font-size: 0.98em;
+    }
+}
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+h1, h2 {
+    color: var(--text-main);
+    font-weight: 600;
+    margin: 0;
+    font-size: 1.5em;
+    text-align: center;
+    width: 100%;
+}
+form, .user-info-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    box-sizing: border-box;
+}
+form div, .user-info-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+label {
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 0.2rem;
+    font-size: 1em;
+}
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+select {
+    width: 100%;
+    min-height: 48px;
+    max-height: 48px;
+    padding: 0.8rem 1rem;
+    color: var(--text-main);
+    background: var(--input-bg);
+    border: 1.5px solid var(--input-border);
+    border-radius: 8px;
+    font-size: 1em;
+    outline: none;
+    transition: border 0.3s, box-shadow 0.3s;
+    box-shadow: none;
+    box-sizing: border-box;
+}
+body.dark-theme input[type="text"],
+body.dark-theme input[type="password"],
+body.dark-theme input[type="email"],
+body.dark-theme input[type="number"],
+body.dark-theme select {
+    color: #fff;
+    background: #23283aee;
+}
+input:focus, select:focus {
+    border: 1.5px solid var(--accent);
+    background: #e9f7f3;
+}
+button, #send-icon {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem 1.5rem;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    box-shadow: none;
+    transition: background 0.3s, transform 0.2s;
+    outline: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+button:hover, #send-icon:hover {
+    background: #0e8c6b;
+    transform: scale(1.04);
+}
+#send-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 1.3em;
+    margin-left: 0.5rem;
+    padding: 0;
+}
+.input-area {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+    padding-top: 0;
+    background: var(--card-bg);
+    position: relative;
+    z-index: 1;
+}
+#user-input {
+    flex-grow: 1;
+    font-size: 1em;
+    border-radius: 8px;
+    background: var(--input-bg);
+    color: var(--text-main);
+    border: 1.5px solid var(--input-border);
+    transition: border 0.3s, box-shadow 0.3s;
+}
+#chat-box {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 0;
+    background: none;
+    border: none;
+}
+#chat-box::-webkit-scrollbar {
+    width: 8px;
+}
+#chat-box::-webkit-scrollbar-thumb {
+    background: var(--accent2);
+    border-radius: 8px;
+}
+.message {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.7em;
+    margin: 0.2rem 0;
+    font-size: 1em;
+    background: none;
+    box-shadow: none;
+    border: none;
+}
+.user-message {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+.bot-message {
+    flex-direction: row;
+    justify-content: flex-start;
+    background: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+.avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 1.5em;
+    background: var(--input-bg);
+    color: var(--accent);
+}
+.user-message .avatar {
+    background: var(--accent);
+    color: #fff;
+}
+.bot-message .avatar {
+    background: #ececec;
+    color: var(--accent);
+}
+.msg-text {
+    display: inline-block;
+    background: #ececec;
+    color: var(--text-main);
+    border-radius: 12px;
+    padding: 0.9rem 1.2rem;
+    max-width: 80vw;
+    word-break: break-word;
+}
+.user-message .msg-text {
+    background: var(--accent);
+    color: #fff;
+}
+.bot-message .msg-text {
+    background: #ececec;
+    color: var(--text-main);
+}
+body.dark-theme .bot-message .msg-text {
+    background: #444654;
+    color: #fff;
+}
+p {
+    margin-top: 1.5rem;
+    color: var(--text-muted);
+}
+p a {
+    color: var(--accent);
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+p a:hover {
+    color: #0e8c6b;
+}
+.theme-toggle {
+    font-size: 1.5em;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 1em;
+}
+.user-info-form {
+    margin-top: 0;
+    padding-top: 0;
+}
+#chat-box .bot-message:first-child {
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
